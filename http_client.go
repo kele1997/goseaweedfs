@@ -111,7 +111,7 @@ func (c *httpClient) upload(url string, filename string, fileReader io.Reader, m
 	result := make(chan error, 1)
 	go func() {
 		h := make(textproto.MIMEHeader)
-		h.Set("Content-Disposition", fmt.Sprintf(`form-data; name="file"; filename="%s"`, normalizeName(filename)))
+		h.Set("Content-Disposition", fmt.Sprintf(`form-data; name="file"; filename="%s"`, filename))
 		if mtype == "" {
 			mtype = mime.TypeByExtension(strings.ToLower(filepath.Ext(filename)))
 		}
